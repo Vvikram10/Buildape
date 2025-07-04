@@ -55,7 +55,7 @@ const TrendingProduct = () => {
         yoyo: true,
         ease: 'sine.inOut',
         stagger: 0.2,
-        scrub: true,
+        // scrub: true,
       });
 
       // Mouse interaction animation
@@ -118,8 +118,8 @@ const TrendingProduct = () => {
                     <h3 className="text-xl font-bold">{product.name}</h3>
                     <p className="text-sm text-gray-600 mb-2">{product.variant}</p>
                     <div className="flex justify-between items-center">
-                      <span className="text-black font-bold">{product.price}</span>
-                      <button className="px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-all">
+                      <span className="text-orange-500 font-bold">{product.price}</span>
+                      <button className="px-4 py-2 bg-orange-500 text-white rounded-full hover:bg-gray-800 transition-all">
                         Add to Cart
                       </button>
                     </div>
@@ -131,7 +131,7 @@ const TrendingProduct = () => {
         </div>
       </main>
 
-      <style jsx>{`
+      <style jsx='true' global='true'>{`
         .no-scrollbar::-webkit-scrollbar {
           display: none;
         }
