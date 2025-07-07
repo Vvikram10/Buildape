@@ -30,7 +30,7 @@ import Register from "./components/auth/Register";
 const App = () => {
   return (
     <Router>
-      <MarqueeBanner />
+      {/* <MarqueeBanner /> */}
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

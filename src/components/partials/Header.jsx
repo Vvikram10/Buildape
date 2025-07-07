@@ -197,9 +197,9 @@ const Header = () => {
   const toggleMobileShopByGoal = () => setMobileShopByGoalOpen(!mobileShopByGoalOpen);
 
   return (
-    <div className="w-full  z-50 bg-white sticky top-0 shadow">
+    <div className="w-full  z-50  bg-transparent sticky top-0 ">
       {/* Top Navigation */}
-      <div className="flex items-center justify-between px-4 md:px-10 pt-1 border-b border-gray-200">
+      <div className="flex items-center justify-between px-4 md:px-10 pt-1 ">
         {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center">
           <button
@@ -248,7 +248,7 @@ const Header = () => {
       </div>
 
       {/* Mobile Search */}
-      <div className="md:hidden px-4 py-2 border-b border-gray-200">
+      <div className="md:hidden px-4 py-2 ">
         <div className="flex">
           <input
             type="text"
@@ -262,7 +262,7 @@ const Header = () => {
       </div>
 
       {/* Bottom Navigation - Desktop */}
-      <div className="hidden md:flex items-center space-x-6 px-4 md:px-16 py-5 font-medium text-md border-b relative bg-white border-gray-200">
+      <div className="hidden md:flex items-center space-x-6 px-4 md:px-16 py-5 font-medium text-md  relative bg-transparent">
         <Link to="/" className="hover:text-orange-500">
           Home
         </Link>
@@ -278,7 +278,7 @@ const Header = () => {
           </div>
 
           {showCategories && (
-            <div className="categories-mega-menu absolute left-0 right-0 w-full top-full bg-white shadow-lg border-t z-50 px-4">
+            <div className="categories-mega-menu absolute left-0 right-0 w-full bg-white shadow-lg top-full  z-50 px-4">
               <div className="mx-auto max-w-7xl px-6 py-3 grid grid-cols-5 gap-6 text-sm text-gray-700">
                 {allCategoryData.map((section, index) => (
                   <div key={index}>
@@ -321,7 +321,7 @@ const Header = () => {
           </div>
 
           {showBrands && (
-            <div className="brands-mega-menu absolute left-0 right-0 w-full top-full bg-white shadow-lg border-t z-50 px-4">
+            <div className="brands-mega-menu absolute left-0 right-0 w-full top-full bg-white shadow-lg  z-50 px-4">
               <div className="mx-auto max-w-7xl px-6 py-3 grid grid-cols-5 gap-6 text-sm text-gray-700">
                 {allBrandData.map((section, index) => (
                   <div key={index}>
