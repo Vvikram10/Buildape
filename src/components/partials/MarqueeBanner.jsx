@@ -12,7 +12,7 @@ const MarqueeBanner = () => {
         `}
       </style>
 
-      <div className="w-full overflow-hidden bg-gray-900 border-y  py-3">
+      <div className="w-full overflow-hidden bg-[#000] border-y  py-3">
         <div
           className="whitespace-nowrap flex gap-8 text-lg font-normal text-white"
           style={{

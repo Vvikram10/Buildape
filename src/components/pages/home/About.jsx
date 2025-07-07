@@ -52,7 +52,7 @@ const About = () => {
   return (
     <section
       ref={aboutRef}
-      className="about-section min-h-screen flex items-center justify-center py-20 px-4 overflow-hidden bg-white relative"
+      className="about-section min-h-screen flex items-center justify-center py-20 px-12 overflow-hidden bg-white relative"
     >
       <div className="container mx-auto">
         <div

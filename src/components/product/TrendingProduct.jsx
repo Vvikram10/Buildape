@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
+import { Link } from 'react-router-dom';
 
 const TrendingProduct = () => {
   const componentRef = useRef(null);
@@ -109,6 +110,7 @@ const TrendingProduct = () => {
                 key={product.id} 
                 className="product-card snap-start relative group w-72 flex-shrink-0 h-96 rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:shadow-lg bg-gray-50"
               >
+                 <Link to={`/products/${product.id}`} className="absolute inset-0 z-30"></Link>
                 <div className="product-bg absolute inset-0 bg-gray-100"></div>
                 <div className="relative h-full flex items-center justify-center p-6">
                   <img src={product.image} alt={product.name} className="product-image h-48 object-contain transform transition-transform duration-500 group-hover:scale-110 z-10" />
