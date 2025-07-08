@@ -150,7 +150,7 @@ const TopProduct = () => {
   }, [products]);
 
   return (
-    <div className="text-gray-800 min-h-screen w-full flex flex-col justify-center items-center bg-gray-50">
+    <div className="text-gray-800 min-h-screen w-full flex flex-col justify-center items-center bg-white">
       <header className="text-center py-12 px-4">
         <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Top Products</h2>
         <p className="text-gray-500 text-sm md:text-base mt-3 max-w-2xl mx-auto">
