@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-
+import { motion } from 'framer-motion'; // Add this import
 gsap.registerPlugin(ScrollToPlugin);
 
 const TopProduct = () => {
@@ -54,14 +54,14 @@ const TopProduct = () => {
         isMobile,
         collapsed: {
           width: isMobile ? '150px' : '200px',
-          height: isMobile ? '200px' : '260px',
+          height: isMobile ? '180px' : '200px',
         },
         expanded: {
           width: isMobile ? 'calc(100vw - 40px)' : '500px',
           height: isMobile ? '460px' : '600px',
         },
         image: {
-          collapsedScale: isMobile ? 0.8 : 1.2,
+          collapsedScale: isMobile ? 0.8 : 0.8,
           expandedScale: isMobile ? 1 : 1.15,
         },
       };
@@ -151,12 +151,96 @@ const TopProduct = () => {
 
   return (
     <div className="text-gray-800 min-h-screen w-full flex flex-col justify-center items-center bg-white">
-      <header className="text-center py-12 px-4">
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Top Products</h2>
-        <p className="text-gray-500 text-sm md:text-base mt-3 max-w-2xl mx-auto">
+
+       {/* <header className="text-center py-12 px-4">
+        <motion.h2 
+          initial={{ opacity: 0, filter: "blur(10px)" }}
+          animate={{ opacity: 1, filter: "blur(0px)" }}
+          transition={{ duration: 1.2 }}
+          className="text-4xl md:text-5xl font-bold tracking-tight"
+        >
+          Top Products
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="text-gray-500 text-sm md:text-base mt-3 max-w-2xl mx-auto"
+        >
           Our best-selling products with interactive animations.
-        </p>
-      </header>
+        </motion.p>
+      </header> */}
+      {/* <header className="text-center py-12 px-4">
+  <motion.div
+    initial={{ opacity: 0, filter: "blur(10px)" }}
+    animate={{ opacity: 1, filter: "blur(0px)" }}
+    transition={{ duration: 1.2 }}
+    className="relative inline-block"
+  >
+    <motion.h2 
+      className="text-4xl md:text-5xl py-2 font-bold tracking-tight bg-clip-text text-transparent"
+      style={{
+        backgroundImage: 'linear-gradient(90deg, #3b82f6, #ec4899, #3b82f6)',
+        backgroundSize: '200% auto',
+      }}
+      animate={{
+        backgroundPosition: ['0% center', '100% center', '0% center']
+      }}
+      transition={{
+        duration: 8,
+        repeat: Infinity,
+        ease: 'linear'
+      }}
+    >
+      Top Products
+    </motion.h2>
+  </motion.div>
+  <motion.p
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.8, delay: 0.5 }}
+    className="text-gray-500 text-sm md:text-base mt-3 max-w-2xl mx-auto"
+  >
+    Our best-selling products with interactive animations.
+  </motion.p>
+</header> */}
+<header className="text-center py-12 px-4">
+  <motion.div
+    initial={{ opacity: 0, filter: "blur(10px)" }}
+    animate={{ opacity: 1, filter: "blur(0px)" }}
+    transition={{ duration: 1.2 }}
+    className="relative inline-block"
+  >
+    <div className="text-4xl md:text-5xl font-bold tracking-tight">
+      {"Top Products".split("").map((char, i) => (
+        <motion.span
+          key={i}
+          className="relative inline-block"
+          initial={{ color: "#000000" }}
+          animate={{
+            color: ["#000000", "#f97316", "#000000"]
+          }}
+          transition={{
+            delay: i * 0.1,
+            duration: 1.5,
+            repeat: Infinity,
+            repeatDelay: "Top Products".length * 0.1 + 1
+          }}
+        >
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
+      ))}
+    </div>
+  </motion.div>
+  <motion.p
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.8, delay: 0.5 }}
+    className="text-gray-500 text-sm md:text-base mt-3 max-w-2xl mx-auto"
+  >
+    Our best-selling products with interactive animations.
+  </motion.p>
+</header>
 
       <style jsx>{`
         .hide-scrollbar::-webkit-scrollbar {
