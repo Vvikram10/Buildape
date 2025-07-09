@@ -197,7 +197,7 @@ const Header = () => {
   const toggleMobileShopByGoal = () => setMobileShopByGoalOpen(!mobileShopByGoalOpen);
 
   return (
-    <div className="w-full  z-50  bg-transparent sticky top-0 ">
+    <div className="w-full  z-50   fixed top-0 ">
       {/* Top Navigation */}
       <div className="flex items-center justify-between px-4 md:px-10 pt-1 ">
         {/* Mobile Menu Button */}
@@ -262,7 +262,7 @@ const Header = () => {
       </div>
 
       {/* Bottom Navigation - Desktop */}
-      <div className="hidden md:flex items-center space-x-6 px-4 md:px-16 py-5 font-medium text-md  relative bg-transparent">
+      <div className="hidden text-orange-500 md:flex items-center space-x-6 px-4 md:px-16 py-5 font-medium text-md  relative ">
         <Link to="/" className="hover:text-orange-500">
           Home
         </Link>

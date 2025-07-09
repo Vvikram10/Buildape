@@ -4,14 +4,14 @@ import TrendingProduct from '../product/TrendingProduct'
 import About from '../pages/home/About'
 import FitnessServices from '../pages/home/FitnessServices'
 import NewsletterSubscribe from '../pages/others/NewsletterSubscribe'
+import Hero from '../pages/home/Hero'
 
 
 const Home = () => {
   return (
     <>
    
-    {/* <BottomNav /> */}
-    {/* <Hero /> */}
+    <Hero />
     <TopProduct />
     <About />
     <TrendingProduct />
