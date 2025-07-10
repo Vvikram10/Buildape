@@ -1,5 +1,3 @@
-
-
 import React, { useState, useRef, useEffect } from "react";
 import {
   FaShoppingCart,
@@ -50,18 +48,13 @@ const Header = () => {
         "Creatine",
       ],
     },
-    { 
-      heading: "Shop By Category E–H", 
-      items: ["Energy Drink", "Fat Burner"] 
+    {
+      heading: "Shop By Category E–H",
+      items: ["Energy Drink", "Fat Burner"],
     },
     {
       heading: "Shop By Category I–N",
-      items: [
-        "Joint Health",
-        "Keto",
-        "Kidney & Liver",
-        "Mass Gainer",
-      ],
+      items: ["Joint Health", "Keto", "Kidney & Liver", "Mass Gainer"],
     },
     {
       heading: "Shop By Category O–Z",
@@ -145,10 +138,17 @@ const Header = () => {
       "Protein Hydrolyzed": "protein-hydrolyzed",
       "Protein Isolate": "protein-isolate",
       "Protein Casein": "protein-casein",
-      "Protein Vegan": "protein-vegan"
+      "Protein Vegan": "protein-vegan",
     };
-    
-    return mappings[name] || name.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and').replace(/\//g, '-');
+
+    return (
+      mappings[name] ||
+      name
+        .toLowerCase()
+        .replace(/\s+/g, "-")
+        .replace(/&/g, "and")
+        .replace(/\//g, "-")
+    );
   };
 
   // Desktop mega menu handlers
@@ -179,25 +179,27 @@ const Header = () => {
   // Close menus when clicking outside
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (showCategories && !e.target.closest('.categories-mega-menu')) {
+      if (showCategories && !e.target.closest(".categories-mega-menu")) {
         setShowCategories(false);
       }
-      if (showBrands && !e.target.closest('.brands-mega-menu')) {
+      if (showBrands && !e.target.closest(".brands-mega-menu")) {
         setShowBrands(false);
       }
     };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [showCategories, showBrands]);
 
   // Mobile menu handlers
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
-  const toggleMobileCategories = () => setMobileCategoriesOpen(!mobileCategoriesOpen);
+  const toggleMobileCategories = () =>
+    setMobileCategoriesOpen(!mobileCategoriesOpen);
   const toggleMobileBrands = () => setMobileBrandsOpen(!mobileBrandsOpen);
-  const toggleMobileShopByGoal = () => setMobileShopByGoalOpen(!mobileShopByGoalOpen);
+  const toggleMobileShopByGoal = () =>
+    setMobileShopByGoalOpen(!mobileShopByGoalOpen);
 
   return (
-    <div className="w-full  z-50   fixed top-0 ">
+    <div className="w-full  z-50   sticky top-0 ">
       {/* Top Navigation */}
       <div className="flex items-center justify-between px-4 md:px-10 pt-1 ">
         {/* Mobile Menu Button */}
@@ -262,7 +264,7 @@ const Header = () => {
       </div>
 
       {/* Bottom Navigation - Desktop */}
-      <div className="hidden text-orange-500 md:flex items-center space-x-6 px-4 md:px-16 py-5 font-medium text-md  relative ">
+      <div className="hidden text-gray-800 md:flex items-center space-x-6 px-4 md:px-16 py-5 font-medium text-md  relative ">
         <Link to="/" className="hover:text-orange-500">
           Home
         </Link>
@@ -366,10 +368,7 @@ const Header = () => {
           <div className="absolute top-0 left-0 h-full w-4/5 max-w-sm bg-white shadow-lg transform transition-transform duration-300 ease-in-out">
             <div className="flex items-center justify-between p-4 border-b border-gray-200">
               <img src="/logo-1.png" alt="Buildape" className="h-12" />
-              <button
-                onClick={toggleMobileMenu}
-                className="text-red-500"
-              >
+              <button onClick={toggleMobileMenu} className="text-red-500">
                 <FaTimes size={24} />
               </button>
             </div>
