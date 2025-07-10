@@ -126,7 +126,7 @@ const App = () => {
   return (
     <Router>
       {/* आपका मुख्य एप्लिकेशन हमेशा रेंडर होता रहेगा */}
-      <Header />
+      {/* <Header /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
