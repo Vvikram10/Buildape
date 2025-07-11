@@ -487,28 +487,28 @@ import { FaUser } from "react-icons/fa";
 const Header = () => {
   return (
     <header className="w-full fixed top-0  z-50 pb-16">
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div className="container mx-auto px-4 py-2 flex justify-between items-center">
         {/* Logo with image */}
         <Link to="/">
           <img 
-            src="/logo-1.png" // Replace with your actual logo path
+            src="/white.png" // Replace with your actual logo path
             alt="BUILDAPE" 
-            className="h-10" // Adjust height as needed
+            className="h-15" // Adjust height as needed
           />
         </Link>
 
         {/* Navigation Links */}
         <nav className="hidden md:flex space-x-6">
-          <Link to="/" className="hover:text-gray-600 font-medium">
+          <Link to="/" className="hover:text-gray-600 text-white font-medium">
             HOME
           </Link>
-          <Link to="/menu" className="hover:text-gray-600 font-medium">
+          <Link to="/menu" className="hover:text-gray-600 text-white font-medium">
             MENU
           </Link>
-          <Link to="/about" className="hover:text-gray-600 font-medium">
+          <Link to="/about" className="hover:text-gray-600 text-white font-medium">
             ABOUT US
           </Link>
-          <Link to="/contact" className="hover:text-gray-600 font-medium">
+          <Link to="/contact" className="hover:text-gray-600 text-white font-medium">
             CONTACT
           </Link>
         </nav>
@@ -517,7 +517,7 @@ const Header = () => {
         <div className="flex items-center space-x-4 ">
           <Link 
             to="/login" 
-            className="flex items-center space-x-1 hover:text-gray-600"
+            className="flex items-center space-x-1 hover:text-gray-600 rounded-full bg-white p-2"
           >
             {/* <span className="hidden md:inline">LOGIN</span> */}
             <FaUser className="text-lg" />
