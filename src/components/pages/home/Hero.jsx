@@ -654,6 +654,242 @@
 
 // export default Hero;
 
+// import React, { useRef, useState, useEffect, useCallback } from "react";
+// import { gsap } from "gsap";
+
+// const Hero = () => {
+//   const heroRef = useRef(null);
+//   const headingRef = useRef(null);
+//   const paraRef = useRef(null);
+
+//   // हर शब्द के लिए अलग Ref
+//   const fuelRef = useRef(null);
+//   const yourRef = useRef(null);
+//   const fitnessRef = useRef(null);
+
+//   const [isAnimating, setIsAnimating] = useState(false);
+//   const [isHeroVisible, setIsHeroVisible] = useState(true);
+
+//   // टेक्स्ट के तीन हिस्से
+//   const textPart1 = "Fuel";
+//   const textPart2 = "Your";
+//   const textPart3 = "Fitness";
+
+//   // --- यूनिक मल्टी-डायरेक्शनल शुरुआती एनिमेशन ---
+//   useEffect(() => {
+//     // Refs से एलिमेंट्स चुनें
+//     const fuelElement = fuelRef.current;
+//     const yourElement = yourRef.current;
+//     const fitnessElement = fitnessRef.current;
+//     const paragraphElement = paraRef.current;
+//     const chars = headingRef.current.querySelectorAll("span > span > span");
+
+//     // 1. हर शब्द की शुरुआती स्तिथि अलग-अलग सेट करें
+//     gsap.set(fuelElement, { xPercent: -101, opacity: 0 }); // बाईं ओर
+//     gsap.set(yourElement, { yPercent: -101, opacity: 0 }); // ऊपर की ओर
+//     gsap.set(fitnessElement, { xPercent: 101, opacity: 0 });  // दाईं ओर
+//     gsap.set(paragraphElement, { opacity: 0 });
+
+//     const tl = gsap.timeline();
+
+//     // 2. सभी शब्दों को उनकी जगह पर एनिमेट करें
+//     tl.to([fuelElement, yourElement, fitnessElement], {
+//       xPercent: 0,
+//       yPercent: 0,
+//       opacity: 1,
+//       stagger: 0.2, // हर शब्द के आने के बीच 0.2s का गैप
+//       duration: 1.5, // स्मूथ इफ़ेक्ट के लिए थोड़ी लंबी अवधि
+//       ease: 'power4.out', // क्यूबिक-बेजियर जैसी स्मूथनेस
+//     });
+
+//     // 3. पैराग्राफ को Fade-in करें
+//     tl.to(paragraphElement, {
+//         opacity: 1,
+//         duration: 0.8,
+//     }, "-=1.2"); // हेडिंग एनिमेशन के साथ-साथ
+
+//     // 4. कलर-वेव एनिमेशन शुरू करें
+//     tl.to(
+//       chars,
+//       {
+//         color: "#f97316",
+//         duration: 0.75,
+//         ease: "power1.inOut",
+//         stagger: 0.08,
+//         yoyo: true,
+//         repeat: -1,
+//         repeatDelay: (textPart1.length + textPart2.length + textPart3.length) * 0.1 + 1,
+//       },
+//       "-=0.5"
+//     );
+
+//     return () => {
+//       tl.kill();
+//     };
+//   }, []);
+
+
+//   // --- Scroll Lock/Unlock Logic (कोई बदलाव नहीं) ---
+//   const lockScroll = useCallback(() => {
+//     document.documentElement.style.overflow = "hidden";
+//     document.body.style.overflow = "hidden";
+//   }, []);
+
+//   const unlockScroll = useCallback(() => {
+//     document.documentElement.style.overflow = "auto";
+//     document.body.style.overflow = "auto";
+//   }, []);
+
+//   // --- hideHero फंक्शन (कोई बदलाव नहीं) ---
+//   const hideHero = useCallback(() => {
+//     if (isAnimating) return;
+//     window.dispatchEvent(new Event("hero:hiding"));
+//     setIsAnimating(true);
+//     const tl = gsap.timeline({
+//       onComplete: () => {
+//         setIsHeroVisible(false);
+//         setIsAnimating(false);
+//         unlockScroll();
+//       },
+//     });
+//     tl.to([headingRef.current, paraRef.current], {
+//       y: -100,
+//       opacity: 0,
+//       duration: 0.8,
+//       ease: "power3.in",
+//       stagger: 0.1,
+//     });
+//     tl.to(
+//       heroRef.current,
+//       {
+//         y: "-100%",
+//         duration: 1,
+//         ease: "power3.inOut",
+//       },
+//       "-=0.5"
+//     );
+//   }, [isAnimating, unlockScroll]);
+
+//   // --- showHero फंक्शन (कोई बदलाव नहीं) ---
+//   const showHero = useCallback(() => {
+//     if (isAnimating) return;
+//     window.dispatchEvent(new Event("hero:showing"));
+//     setIsAnimating(true);
+//     lockScroll();
+//     gsap.set([headingRef.current, paraRef.current], { y: -100, opacity: 0 });
+//     const tl = gsap.timeline({
+//       onComplete: () => {
+//         setIsHeroVisible(true);
+//         setIsAnimating(false);
+//         gsap.set([headingRef.current, paraRef.current], { y: 0 });
+//       },
+//     });
+//     tl.to(heroRef.current, {
+//       y: "0%",
+//       duration: 1,
+//       ease: "power3.inOut",
+//     });
+//     tl.to(
+//       [headingRef.current, paraRef.current],
+//       {
+//         y: 0,
+//         opacity: 1,
+//         duration: 0.8,
+//         ease: "power3.out",
+//         stagger: 0.1,
+//       },
+//       "-=0.5"
+//     );
+//   }, [isAnimating, lockScroll]);
+
+//   // --- Event Listeners (कोई बदलाव नहीं) ---
+//   useEffect(() => {
+//     if (isHeroVisible) {
+//       lockScroll();
+//     }
+//     const handleWheel = (e) => {
+//       if (isAnimating) return e.preventDefault();
+//       if (e.deltaY > 0 && isHeroVisible) {
+//         e.preventDefault();
+//         hideHero();
+//       } else if (e.deltaY < 0 && !isHeroVisible && window.scrollY === 0) {
+//         e.preventDefault();
+//         showHero();
+//       }
+//     };
+//     const handleKeyDown = (e) => {
+//       if (isAnimating) return e.preventDefault();
+//       if (["ArrowDown", "PageDown", " "].includes(e.key) && isHeroVisible) {
+//         e.preventDefault();
+//         hideHero();
+//       } else if (e.key === "ArrowUp" && !isHeroVisible && window.scrollY === 0) {
+//         e.preventDefault();
+//         showHero();
+//       }
+//     };
+//     window.addEventListener("wheel", handleWheel, { passive: false });
+//     window.addEventListener("keydown", handleKeyDown, { passive: false });
+//     return () => {
+//       window.removeEventListener("wheel", handleWheel);
+//       window.removeEventListener("keydown", handleKeyDown);
+//       unlockScroll();
+//     };
+//   }, [isAnimating, isHeroVisible, hideHero, showHero, lockScroll, unlockScroll]);
+
+//   return (
+//     <div
+//       ref={heroRef}
+//       className="fixed top-0 left-0 w-full h-screen z-50 bg-black flex items-center justify-center overflow-hidden"
+//     >
+//       <video
+//         className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto object-cover transform -translate-x-1/2 -translate-y-1/2"
+//         autoPlay muted loop playsInline
+//       >
+//         <source src="/video/zym.mp4" type="video/mp4" />
+//       </video>
+//       <div className="relative z-10 text-center px-4">
+//         {/* --- अपडेटेड JSX स्ट्रक्चर --- */}
+//         <h1
+//           ref={headingRef}
+//           className="text-white font-bold text-[clamp(3rem,13vw,9rem)] leading-tight"
+//         >
+//           {/* Fuel */}
+//           <span className="inline-block overflow-hidden">
+//             <span ref={fuelRef} className="inline-block">
+//               {textPart1.split("").map((char, i) => (
+//                 <span key={i} className="relative inline-block">{char}</span>
+//               ))}
+//             </span>
+//           </span>
+//           <span className="inline-block">&nbsp;</span>
+//           {/* Your */}
+//           <span className="inline-block overflow-hidden">
+//             <span ref={yourRef} className="inline-block">
+//               {textPart2.split("").map((char, i) => (
+//                 <span key={i} className="relative inline-block">{char}</span>
+//               ))}
+//             </span>
+//           </span>
+//           <span className="inline-block">&nbsp;</span>
+//           {/* Fitness */}
+//           <span className="inline-block overflow-hidden">
+//             <span ref={fitnessRef} className="inline-block">
+//               {textPart3.split("").map((char, i) => (
+//                 <span key={i} className="relative inline-block">{char}</span>
+//               ))}
+//             </span>
+//           </span>
+//         </h1>
+//         <p ref={paraRef} className="text-gray-300 mt-4 max-w-xl mx-auto text-base sm:text-lg">
+//           Premium protein blends made for strength, endurance & recovery.
+//         </p>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Hero;
+
 import React, { useRef, useState, useEffect, useCallback } from "react";
 import { gsap } from "gsap";
 
@@ -662,53 +898,49 @@ const Hero = () => {
   const headingRef = useRef(null);
   const paraRef = useRef(null);
 
-  // हर शब्द के लिए अलग Ref
+  // Har shabd ke liye alag Ref
   const fuelRef = useRef(null);
   const yourRef = useRef(null);
   const fitnessRef = useRef(null);
 
   const [isAnimating, setIsAnimating] = useState(false);
   const [isHeroVisible, setIsHeroVisible] = useState(true);
+  const [touchStartY, setTouchStartY] = useState(null); // Mobile touch ke liye state
 
-  // टेक्स्ट के तीन हिस्से
+  // Text ke teen hisse
   const textPart1 = "Fuel";
   const textPart2 = "Your";
   const textPart3 = "Fitness";
 
-  // --- यूनिक मल्टी-डायरेक्शनल शुरुआती एनिमेशन ---
+  // --- Unique multi-directional shuruaati animation ---
   useEffect(() => {
-    // Refs से एलिमेंट्स चुनें
     const fuelElement = fuelRef.current;
     const yourElement = yourRef.current;
     const fitnessElement = fitnessRef.current;
     const paragraphElement = paraRef.current;
     const chars = headingRef.current.querySelectorAll("span > span > span");
 
-    // 1. हर शब्द की शुरुआती स्तिथि अलग-अलग सेट करें
-    gsap.set(fuelElement, { xPercent: -101, opacity: 0 }); // बाईं ओर
-    gsap.set(yourElement, { yPercent: -101, opacity: 0 }); // ऊपर की ओर
-    gsap.set(fitnessElement, { xPercent: 101, opacity: 0 });  // दाईं ओर
+    gsap.set(fuelElement, { xPercent: -101, opacity: 0 });
+    gsap.set(yourElement, { yPercent: -101, opacity: 0 });
+    gsap.set(fitnessElement, { xPercent: 101, opacity: 0 });
     gsap.set(paragraphElement, { opacity: 0 });
 
     const tl = gsap.timeline();
 
-    // 2. सभी शब्दों को उनकी जगह पर एनिमेट करें
     tl.to([fuelElement, yourElement, fitnessElement], {
       xPercent: 0,
       yPercent: 0,
       opacity: 1,
-      stagger: 0.2, // हर शब्द के आने के बीच 0.2s का गैप
-      duration: 1.5, // स्मूथ इफ़ेक्ट के लिए थोड़ी लंबी अवधि
-      ease: 'power4.out', // क्यूबिक-बेजियर जैसी स्मूथनेस
+      stagger: 0.2,
+      duration: 1.5,
+      ease: 'power4.out',
     });
 
-    // 3. पैराग्राफ को Fade-in करें
     tl.to(paragraphElement, {
         opacity: 1,
         duration: 0.8,
-    }, "-=1.2"); // हेडिंग एनिमेशन के साथ-साथ
+      }, "-=1.2");
 
-    // 4. कलर-वेव एनिमेशन शुरू करें
     tl.to(
       chars,
       {
@@ -726,10 +958,10 @@ const Hero = () => {
     return () => {
       tl.kill();
     };
-  }, []);
+  }, []); // Note: textPart lengths are constants, so not needed in deps
 
 
-  // --- Scroll Lock/Unlock Logic (कोई बदलाव नहीं) ---
+  // --- Scroll Lock/Unlock Logic ---
   const lockScroll = useCallback(() => {
     document.documentElement.style.overflow = "hidden";
     document.body.style.overflow = "hidden";
@@ -740,7 +972,7 @@ const Hero = () => {
     document.body.style.overflow = "auto";
   }, []);
 
-  // --- hideHero फंक्शन (कोई बदलाव नहीं) ---
+  // --- hideHero function ---
   const hideHero = useCallback(() => {
     if (isAnimating) return;
     window.dispatchEvent(new Event("hero:hiding"));
@@ -770,17 +1002,18 @@ const Hero = () => {
     );
   }, [isAnimating, unlockScroll]);
 
-  // --- showHero फंक्शन (कोई बदलाव नहीं) ---
+  // --- showHero function ---
   const showHero = useCallback(() => {
     if (isAnimating) return;
     window.dispatchEvent(new Event("hero:showing"));
     setIsAnimating(true);
     lockScroll();
+    setIsHeroVisible(true); // Show hero content immediately
     gsap.set([headingRef.current, paraRef.current], { y: -100, opacity: 0 });
     const tl = gsap.timeline({
       onComplete: () => {
-        setIsHeroVisible(true);
         setIsAnimating(false);
+        // Ensure the elements are perfectly at y: 0 after animation
         gsap.set([headingRef.current, paraRef.current], { y: 0 });
       },
     });
@@ -802,13 +1035,19 @@ const Hero = () => {
     );
   }, [isAnimating, lockScroll]);
 
-  // --- Event Listeners (कोई बदलाव नहीं) ---
+  // --- Event Listeners for Desktop & Mobile ---
   useEffect(() => {
     if (isHeroVisible) {
       lockScroll();
+    } else {
+      unlockScroll();
     }
+
     const handleWheel = (e) => {
-      if (isAnimating) return e.preventDefault();
+      if (isAnimating) {
+        e.preventDefault();
+        return;
+      }
       if (e.deltaY > 0 && isHeroVisible) {
         e.preventDefault();
         hideHero();
@@ -817,8 +1056,12 @@ const Hero = () => {
         showHero();
       }
     };
+
     const handleKeyDown = (e) => {
-      if (isAnimating) return e.preventDefault();
+      if (isAnimating) {
+        e.preventDefault();
+        return;
+      }
       if (["ArrowDown", "PageDown", " "].includes(e.key) && isHeroVisible) {
         e.preventDefault();
         hideHero();
@@ -827,33 +1070,62 @@ const Hero = () => {
         showHero();
       }
     };
+
+    const handleTouchStart = (e) => {
+      if (isAnimating) return;
+      setTouchStartY(e.touches[0].clientY);
+    };
+
+    const handleTouchMove = (e) => {
+      if (isAnimating || touchStartY === null) return;
+    
+      const currentY = e.touches[0].clientY;
+      const deltaY = touchStartY - currentY; // Positive delta = swipe up
+      const swipeThreshold = 50; // Minimum swipe distance
+    
+      if (deltaY > swipeThreshold && isHeroVisible) {
+        hideHero();
+        setTouchStartY(null); // Reset after action
+      } else if (deltaY < -swipeThreshold && !isHeroVisible && window.scrollY === 0) {
+        showHero();
+        setTouchStartY(null); // Reset after action
+      }
+    };
+
     window.addEventListener("wheel", handleWheel, { passive: false });
     window.addEventListener("keydown", handleKeyDown, { passive: false });
+    window.addEventListener("touchstart", handleTouchStart, { passive: false });
+    window.addEventListener("touchmove", handleTouchMove, { passive: false });
+
     return () => {
       window.removeEventListener("wheel", handleWheel);
       window.removeEventListener("keydown", handleKeyDown);
-      unlockScroll();
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+      unlockScroll(); // Ensure scroll is unlocked on component unmount
     };
-  }, [isAnimating, isHeroVisible, hideHero, showHero, lockScroll, unlockScroll]);
+  }, [isAnimating, isHeroVisible, hideHero, showHero, lockScroll, unlockScroll, touchStartY]);
 
   return (
     <div
       ref={heroRef}
-      className="fixed top-0 left-0 w-full h-screen z-50 bg-black flex items-center justify-center overflow-hidden"
+      className="fixed top-0 left-0 w-full h-screen z-50 bg-black flex items-center justify-center"
+      style={{ visibility: isHeroVisible ? 'visible' : 'hidden' }} // Hide when not visible
     >
       <video
         className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto object-cover transform -translate-x-1/2 -translate-y-1/2"
-        autoPlay muted loop playsInline
+        autoPlay
+        muted
+        loop
+        playsInline
       >
         <source src="/video/zym.mp4" type="video/mp4" />
       </video>
       <div className="relative z-10 text-center px-4">
-        {/* --- अपडेटेड JSX स्ट्रक्चर --- */}
         <h1
           ref={headingRef}
           className="text-white font-bold text-[clamp(3rem,13vw,9rem)] leading-tight"
         >
-          {/* Fuel */}
           <span className="inline-block overflow-hidden">
             <span ref={fuelRef} className="inline-block">
               {textPart1.split("").map((char, i) => (
@@ -862,7 +1134,6 @@ const Hero = () => {
             </span>
           </span>
           <span className="inline-block">&nbsp;</span>
-          {/* Your */}
           <span className="inline-block overflow-hidden">
             <span ref={yourRef} className="inline-block">
               {textPart2.split("").map((char, i) => (
@@ -871,7 +1142,6 @@ const Hero = () => {
             </span>
           </span>
           <span className="inline-block">&nbsp;</span>
-          {/* Fitness */}
           <span className="inline-block overflow-hidden">
             <span ref={fitnessRef} className="inline-block">
               {textPart3.split("").map((char, i) => (
