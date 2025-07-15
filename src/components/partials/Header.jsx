@@ -510,7 +510,7 @@ const HeaderContent = ({ isInitial }) => {
       <nav className="hidden md:flex space-x-6">
         <Link to="/" className={`font-medium transition-colors duration-300 ${textColor} ${hoverTextColor}`}>HOME</Link>
         <Link to="/menu" className={`font-medium transition-colors duration-300 ${textColor} ${hoverTextColor}`}>MENU</Link>
-        <Link to="/about" className={`font-medium transition-colors duration-300 ${textColor} ${hoverTextColor}`}>ABOUT US</Link>
+        <Link to="/consult" className={`font-medium transition-colors duration-300 ${textColor} ${hoverTextColor}`}>CONSULTANCY</Link>
         <Link to="/contact" className={`font-medium transition-colors duration-300 ${textColor} ${hoverTextColor}`}>CONTACT</Link>
       </nav>
       <div className="flex items-center space-x-4">
@@ -538,7 +538,7 @@ const Header = () => {
     const ease = 'power3.inOut';
     
     // नीचे आने के लिए ज़्यादा समय (धीमा एनिमेशन)
-    const slideDownDuration = 1.2; 
+    const slideDownDuration = 2; 
     // ऊपर जाने के लिए कम समय (तेज़ एनिमेशन)
     const slideUpDuration = 0.6;   
 
@@ -553,7 +553,7 @@ const Header = () => {
     }
 
     gsap.to(headerRef.current, {
-        duration: 1
+        duration: 0.5
     });
   }, [isHeroActive]);
 

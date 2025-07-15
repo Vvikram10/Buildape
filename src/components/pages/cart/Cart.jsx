@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
   const [quantity, setQuantity] = useState(1);
@@ -46,7 +47,7 @@ const Cart = () => {
                     <div className="flex items-center space-x-4">
                       <div className="w-20 h-20 flex-shrink-0 overflow-hidden rounded-md">
                         <img 
-                          src="adm/uploads/product/bcaa+orange.jpeg" 
+                          src="/product-1.png" 
                           alt="Optimum Nutrition Amino Energy" 
                           className="w-full h-full object-cover"
                           loading="lazy"
@@ -174,13 +175,13 @@ const Cart = () => {
               <input type="hidden" name="promo_id" value="" />
               <input type="hidden" name="org_total" value="" />
               
-              <button 
-                type="submit" 
+              <Link
+                to='/checkout'
                 name="checkout" 
                 className="w-full bg-orange-500 hover:bg-orange-500 text-white py-3 px-4 rounded-md font-medium transition duration-200"
               >
                 Checkout
-              </button>
+              </Link>
             </form>
           </div>
           

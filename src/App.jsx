@@ -118,6 +118,7 @@ import Cart from "./components/pages/cart/Cart";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Hero from "./components/pages/home/Hero";
+import Checkout from "./components/pages/cart/Checkout";
 
 const App = () => {
   // Hero को कंट्रोल करने के लिए अब यहाँ कोई state या effect नहीं है।
@@ -135,6 +136,7 @@ const App = () => {
         <Route path="/contact" element={<ContactSection />} />
         <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route path="/mass-gainers" element={<MassGainerPage />} />
         <Route path="/whey-proteins" element={<WheyProteinPage />} />
       </Routes>
