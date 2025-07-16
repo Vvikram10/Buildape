@@ -119,6 +119,7 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Hero from "./components/pages/home/Hero";
 import Checkout from "./components/pages/cart/Checkout";
+import ScrollToTop from "./components/pages/others/ScrollToTop";
 
 const App = () => {
   // Hero को कंट्रोल करने के लिए अब यहाँ कोई state या effect नहीं है।
@@ -127,6 +128,7 @@ const App = () => {
   return (
     <Router>
       {/* आपका मुख्य एप्लिकेशन हमेशा रेंडर होता रहेगा */}
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

@@ -22,14 +22,14 @@ const Cart = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-white">
+    <div className="container mx-auto px-4 py-20 bg-white">
       <h3 className="text-2xl font-bold mb-6">My Cart</h3>
       
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Cart Items */}
         <div className="lg:w-8/12">
           {/* Free Shipping Banner (uncomment if needed) */}
-          {/* <p className="text-green-600 mb-4">Free Delivery in Brampton in 24 Hours</p> */}
+          <p className="text-green-600 mb-4">Free Delivery in Brampton in 24 Hours</p>
           
           {/* Desktop Table */}
           <div className="hidden md:block">
@@ -99,7 +99,7 @@ const Cart = () => {
               <div className="flex space-x-4">
                 <div className="w-20 h-20 flex-shrink-0 overflow-hidden rounded-md">
                   <img 
-                    src="adm/uploads/product/bcaa+orange.jpeg" 
+                    src="/product-1.png" 
                     alt="Optimum Nutrition Amino Energy" 
                     className="w-full h-full object-cover"
                     loading="lazy"

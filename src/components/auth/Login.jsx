@@ -136,7 +136,7 @@ const Login = () => {
           onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/600x800/e2e8f0/4a5568?text=Image+Not+Found'; }}
         />
         {/* Semi-transparent overlay for readability */}
-        <div className="absolute inset-0 bg-black/60 z-1"></div>
+        <div className="absolute inset-0 backdrop-blur-sm bg-black/60 z-1"></div>
 
         {/* Form content container */}
         <div className="relative z-10 p-6 sm:p-8">
@@ -223,7 +223,7 @@ const Login = () => {
               <motion.div variants={itemVariants}>
                 <button
                   type="submit"
-                  className="w-full bg-orange-600 text-white font-semibold py-3 rounded-lg hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-orange-500 transition-all duration-300 transform hover:scale-105"
+                  className="w-full bg-orange-600 cursor-pointer text-white font-semibold py-3 rounded-lg hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-orange-500 transition-all duration-300 transform hover:scale-105"
                 >
                   Sign In
                 </button>
@@ -244,7 +244,7 @@ const Login = () => {
             <motion.div variants={itemVariants}>
                  <button
                   type="button"
-                  className="w-full bg-gray-700 text-white font-semibold py-3 rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gray-500 transition-all duration-300 transform hover:scale-105"
+                  className="w-full bg-gray-700 cursor-pointer text-white font-semibold py-3 rounded-lg hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-gray-500 transition-all duration-300 transform hover:scale-105"
                 >
                   Sign In With OTP
                 </button>
