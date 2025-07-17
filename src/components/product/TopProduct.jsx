@@ -2680,10 +2680,10 @@ gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
 const TopProduct = () => {
   const products = [
-    { id: "product-red", name: "BATCH", variant: "Chicago", description: "One of the most iconic sneakers in history.", price: "$170", image: "/product-1.png", bgColor: "#124a8f" },
-    { id: "product-blue", name: "DIESEL", variant: "White '07", description: "The legend lives on in this classic basketball shoe.", price: "$110", image: "/product-2.png", bgColor: "#a0243c" },
-    { id: "product-pink", name: "ISO GOLD", variant: "Panda", description: "A timeless silhouette that's become a staple.", price: "$115", image: "/product-3.png", bgColor: "#c8920e" },
-    { id: "product-green", name: "RVS", variant: "Panda", description: "A modern classic colorway on a timeless silhouette.", price: "$115", image: "/product-4.png", bgColor: "#0f4e34" },
+    { id: "product-red", name: "BATCH", variant: "Chicago", description: "One of the most iconic sneakers in history.", price: "$170", image: "/images/pr-2.png", bgColor: "#124a8f" },
+    { id: "product-blue", name: "DIESEL", variant: "White '07", description: "The legend lives on in this classic basketball shoe.", price: "$110", image: "/images/pr-3.png", bgColor: "#a0243c" },
+    { id: "product-pink", name: "ISO GOLD", variant: "Panda", description: "A timeless silhouette that's become a staple.", price: "$115", image: "/images/pr-11.png", bgColor: "#c8920e" },
+    { id: "product-green", name: "RVS", variant: "Panda", description: "A modern classic colorway on a timeless silhouette.", price: "$115", image: "/images/pr-1.png", bgColor: "#0f4e34" },
   ];
 
   const sectionRef = useRef(null);

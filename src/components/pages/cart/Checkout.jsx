@@ -940,6 +940,7 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 // --- Custom Dropdown Component (No changes needed here) ---
 const CustomSelect = ({ options, value, onChange, placeholder, name }) => {
@@ -1152,9 +1153,11 @@ const Checkout = () => {
               </div>
 
               <div className="mt-8">
+               <Link to='/order-manage'>
                 <button type="submit" className="w-full cursor-pointer bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-4 rounded-md transition duration-300">
                   Place Order
                 </button>
+               </Link>
               </div>
             </form>
           </div>

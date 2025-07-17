@@ -407,7 +407,7 @@ const NewsletterSubscribe = () => {
             <button
               type="submit"
               name="btn_email_submit"
-              className="px-6 py-3 bg-orange-500 text-white font-bold rounded-md transition-colors duration-200 shadow-sm hover:bg-gray-200 hover:text-orange-500 hover:shadow-lg"
+              className="px-6 py-3 cursor-pointer bg-orange-500 text-white font-bold rounded-md transition-colors duration-200 shadow-sm hover:bg-gray-200 hover:text-orange-500 hover:shadow-lg"
             >
               Subscribe
             </button>

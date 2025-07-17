@@ -313,9 +313,13 @@ const ContactSection = () => {
                       <p className="text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Call Us On
                       </p>
-                      <p className="text-gray-800 font-semibold mt-1">
+                      {/* YAHAN BADLAV KIYA GAYA HAI */}
+                      <a
+                        href="tel:+19057832994"
+                        className="text-gray-800 font-semibold mt-1 block hover:text-blue-700"
+                      >
                         +1 (905) 783-2994
-                      </p>
+                      </a>
                     </div>
                   </div>
 
@@ -329,9 +333,13 @@ const ContactSection = () => {
                       <p className="text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Email
                       </p>
-                      <p className="text-gray-800 font-semibold mt-1">
+                      {/* YAHAN BHI BADLAV KIYA GAYA HAI */}
+                      <a
+                        href="mailto:Buildapenutrition@gmail.com"
+                        className="text-gray-800 font-semibold mt-1 block hover:text-red-600"
+                      >
                         Buildapenutrition@gmail.com
-                      </p>
+                      </a>
                     </div>
                   </div>
                 </div>

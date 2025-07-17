@@ -498,7 +498,7 @@ const TrendingProduct = () => {
                     <p className="text-sm text-gray-600 mb-2">{product.variant}</p>
                     <div className="flex justify-between items-center">
                       <span className="text-orange-500 font-bold">{product.price}</span>
-                      <button className="px-4 py-2 bg-orange-500 hover:bg-gray-800 text-white rounded-full transition-colors relative z-50" onClick={(e) => { e.stopPropagation(); navigate(`/products/${product.id}`); }}>
+                      <button className="px-4 py-2 cursor-pointer bg-orange-500 hover:bg-gray-800 text-white rounded-full transition-colors relative z-50" onClick={(e) => { e.stopPropagation(); navigate(`/products/${product.id}`); }}>
                         Add to Cart
                       </button>
                     </div>

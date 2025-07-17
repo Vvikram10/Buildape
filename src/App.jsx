@@ -120,6 +120,9 @@ import Register from "./components/auth/Register";
 import Hero from "./components/pages/home/Hero";
 import Checkout from "./components/pages/cart/Checkout";
 import ScrollToTop from "./components/pages/others/ScrollToTop";
+import OrderSuccessPage from "./components/pages/cart/OrderSuccessPage";
+import OrderManagementPage from "./components/pages/cart/OrderManagementPage";
+import InvoicePage from "./components/pages/others/InvoicePage";
 
 const App = () => {
   // Hero को कंट्रोल करने के लिए अब यहाँ कोई state या effect नहीं है।
@@ -139,6 +142,9 @@ const App = () => {
         <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/invoice" element={<InvoicePage />} />
+        <Route path="/order" element={<OrderSuccessPage />} />
+        <Route path="/order-manage" element={<OrderManagementPage />} />
         <Route path="/mass-gainers" element={<MassGainerPage />} />
         <Route path="/whey-proteins" element={<WheyProteinPage />} />
       </Routes>

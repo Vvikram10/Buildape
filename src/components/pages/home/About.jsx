@@ -231,7 +231,7 @@ const About = () => {
               Welcome to <span className="text-orange-500">BUILDAPE NUTRITION</span>
             </h3> */}
             
-            <button className="px-8 py-3 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full text-white font-bold hover:scale-105 transition-transform">
+            <button className="cursor-pointer px-8 py-3 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full text-white font-bold hover:scale-105 transition-transform">
               Learn More
             </button>
           </div>
