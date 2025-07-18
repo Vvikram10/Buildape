@@ -8,7 +8,7 @@ const massGainerProducts = [
     name: 'Mass Gainer Pro',
     brand: 'MuscleTech',
     price: 34,
-    image: '/images/mass-gainer.jpg'
+    image: '/product-2.png'
   },
   // Add more products...
 ];

@@ -123,6 +123,7 @@ import ScrollToTop from "./components/pages/others/ScrollToTop";
 import OrderSuccessPage from "./components/pages/cart/OrderSuccessPage";
 import OrderManagementPage from "./components/pages/cart/OrderManagementPage";
 import InvoicePage from "./components/pages/others/InvoicePage";
+import { NotFoundPage } from "./components/pages/others/NotFoundPage";
 
 const App = () => {
   // Hero को कंट्रोल करने के लिए अब यहाँ कोई state या effect नहीं है।
@@ -135,6 +136,7 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="*" element={<NotFoundPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/consult" element={<Consultancy />} />
@@ -145,7 +147,7 @@ const App = () => {
         <Route path="/invoice" element={<InvoicePage />} />
         <Route path="/order" element={<OrderSuccessPage />} />
         <Route path="/order-manage" element={<OrderManagementPage />} />
-        <Route path="/mass-gainers" element={<MassGainerPage />} />
+        <Route path="/mass-gainer" element={<MassGainerPage />} />
         <Route path="/whey-proteins" element={<WheyProteinPage />} />
       </Routes>
       <Footer />
